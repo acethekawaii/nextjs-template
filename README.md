@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# nextjs-template
 
-## Getting Started
+Opinionated Next.js starter for landing pages.
 
-First, run the development server:
+**Stack:** Next.js 16 · React 19 · TypeScript · Tailwind CSS v4 · Lenis (smooth scroll) · Motion (animation) · lucide-react (icons) · clsx + tailwind-merge
+
+## Use this template
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
+# GitHub: click "Use this template", or:
+bunx degit <your-username>/nextjs-template my-site
+cd my-site
+bun install
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## After cloning — 3 edits
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. `lib/site.ts` — name, url, description, socials (drives metadata, `robots.txt`, `sitemap.xml`)
+2. `app/globals.css` — `@theme` design tokens (colors); font in `app/layout.tsx`
+3. `app/page.tsx` — start building
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## What's wired up
 
-## Learn More
+- `components/providers.tsx` — Lenis smooth scrolling (`autoRaf`, anchor-link support) wrapping the whole app
+- `lib/utils.ts` — `cn()` class merging
+- `app/layout.tsx` — Inter via `next/font`, full metadata defaults with `metadataBase` and title template
+- `app/robots.ts` + `app/sitemap.ts` — generated from `lib/site.ts`
+- `app/globals.css` — Tailwind v4 `@theme` tokens + Lenis recommended CSS
 
-To learn more about Next.js, take a look at the following resources:
+## Scripts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+bun dev    # dev server
+bun run build
+bun start
+bun run lint
+```
